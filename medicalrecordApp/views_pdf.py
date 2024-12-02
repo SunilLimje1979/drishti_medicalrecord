@@ -258,7 +258,7 @@ def fi_generateprescriptionpdf(request):
                 # Convert the path to a string without hyperlink
                 final_path = str(absolute_file_path.replace('\\', '/'))
                 url_prefix = "https://drishtis.app/drishti_medicalrecord/static/"
-                url = final_path.replace("/home/ubuntu/medicalrecord/staticfiles/", url_prefix)
+                url = final_path.replace("/home/ubuntu/drishti_medicalrecord/staticfiles/", url_prefix)
                 res = {
                     'message_code': 1000,
                     'message_text': "prescription pdf generated successfully.",
@@ -868,7 +868,7 @@ def fi_generateclinicpdf(request):
                 final_path = str(absolute_file_path.replace('\\', '/'))
                 
                 url_prefix = "https://drishtis.app/drishti_medicalrecord/static/"
-                url = final_path.replace("/home/ubuntu/medicalrecord/staticfiles/", url_prefix)
+                url = final_path.replace("/home/ubuntu/drishti_medicalrecord/staticfiles/", url_prefix)
                 res = {
                     'message_code': 1000,
                     'message_text': "clinic pdf generated successfully.",
