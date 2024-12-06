@@ -855,21 +855,35 @@ def fi_generateclinicpdf(request):
                 pdf_buffer = generate_clinic_pdf(result_doctor_location,result_doctor,result_doctor_location_availability)
                 pdf_value = pdf_buffer.getvalue()
                 pdf_buffer.close()
-                
-    
+                # Define the directory path manually
+                pdf_directory = os.path.join(settings.BASE_DIR, 'staticfiles', 'clinicpdfs')
+                # Ensure the directory exists
+                os.makedirs(pdf_directory, exist_ok=True)
+                # Define the file name and full path
                 pdf_filename = f"{doctor_id}{doctor_location_id}.pdf"
+                pdf_path = os.path.join(pdf_directory, pdf_filename)
+                # Save the file
+                with open(pdf_path, 'wb') as pdf_file:
+                    pdf_file.write(pdf_value)
 
-                pdf_path = os.path.join(settings.PDF_ROOT, pdf_filename)
+                # Convert the file path to a URL
+                url_prefix = "https://drishtis.app/static/clinicpdfs/"
+                url = os.path.join(url_prefix, pdf_filename).replace("\\", "/")
 
-                file_path = default_storage.save(pdf_path, ContentFile(pdf_value))
-                absolute_file_path = default_storage.path(file_path)
+    
+                # pdf_filename = f"{doctor_id}{doctor_location_id}.pdf"
+
+                # pdf_path = os.path.join(settings.PDF_ROOT, pdf_filename)
+
+                # file_path = default_storage.save(pdf_path, ContentFile(pdf_value))
+                # absolute_file_path = default_storage.path(file_path)
 
                 # # Convert the path to a string without hyperlink
                 # final_path = str(absolute_file_path.replace('\\', '/'))
                 
                 # url_prefix = "http://13.233.211.102/drishti_medicalrecord/static/"
                 # url = final_path.replace("/home/ubuntu/drishti_medicalrecord/staticfiles/", url_prefix)
-                url=absolute_file_path
+                # url=absolute_file_path
                 res = {
                     'message_code': 1000,
                     'message_text': "clinic pdf generated successfully.",
