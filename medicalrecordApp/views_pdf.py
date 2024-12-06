@@ -864,11 +864,12 @@ def fi_generateclinicpdf(request):
                 file_path = default_storage.save(pdf_path, ContentFile(pdf_value))
                 absolute_file_path = default_storage.path(file_path)
 
-                # Convert the path to a string without hyperlink
-                final_path = str(absolute_file_path.replace('\\', '/'))
+                # # Convert the path to a string without hyperlink
+                # final_path = str(absolute_file_path.replace('\\', '/'))
                 
-                url_prefix = "http://13.233.211.102/drishti_medicalrecord/static/"
-                url = final_path.replace("/home/ubuntu/drishti_medicalrecord/staticfiles/", url_prefix)
+                # url_prefix = "http://13.233.211.102/drishti_medicalrecord/static/"
+                # url = final_path.replace("/home/ubuntu/drishti_medicalrecord/staticfiles/", url_prefix)
+                url=absolute_file_path
                 res = {
                     'message_code': 1000,
                     'message_text': "clinic pdf generated successfully.",
