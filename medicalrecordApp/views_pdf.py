@@ -867,7 +867,7 @@ def fi_generateclinicpdf(request):
                     pdf_file.write(pdf_value)
 
                 # Convert the file path to a URL
-                url_prefix = "https://drishtis.app/static/clinicpdfs/"
+                url_prefix = "https://drishtis.app/drishti_medicalrecord/static/clinicpdfs/"
                 url = os.path.join(url_prefix, pdf_filename).replace("\\", "/")
 
     
