@@ -881,7 +881,7 @@ def fi_generateclinicpdf(request):
                 # # Convert the path to a string without hyperlink
                 # final_path = str(absolute_file_path.replace('\\', '/'))
                 
-                # url_prefix = "http://13.233.211.102/drishti_medicalrecord/static/"
+                # url_prefix = "http://15.206.32.93/drishti_medicalrecord/static/"
                 # url = final_path.replace("/home/ubuntu/drishti_medicalrecord/staticfiles/", url_prefix)
                 # url=absolute_file_path
                 res = {
